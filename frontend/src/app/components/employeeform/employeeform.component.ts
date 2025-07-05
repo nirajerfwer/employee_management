@@ -83,17 +83,17 @@ export class EmployeeformComponent implements OnInit {
           .createemployee(this.eform.controls,this.uploadefile)
           .subscribe((data) => {
             console.log('employee created', data);
-            alert('Employee Created');
+            // alert('Employee Created');
           });
       } else {
         this.employeeService
           .updateEmployee(this.currentid!, this.eform.controls,this.uploadefile)
           .subscribe((data) => {
             console.log('employee upload', data);
-            alert('employees updated');
+            // alert('employees updated');
           });
       }
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
       console.log(this.eform);
     } else {
       console.log('form invalid');
