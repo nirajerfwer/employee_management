@@ -6,7 +6,7 @@ const ERounter = express.Router();
 import path from 'path';
 import fs from 'fs';
 
-const uploadDir = path.join('..\\frontend\\src\\assets','pictures');
+const uploadDir = path.join('..\\backend\\public','pictures');
 let currentuploadimae = "";
 
 if(!fs.existsSync(uploadDir)){

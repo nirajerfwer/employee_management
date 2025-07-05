@@ -6,6 +6,8 @@ const cors = require('cors');
 const app = express()
 const port = 3000
 
+app.use('/pictures', express.static('public/pictures'));
+
 async function dbconnection(){
     await mongoose.connect("mongodb://localhost:27017",{dbName:"employee_db"});
 }
