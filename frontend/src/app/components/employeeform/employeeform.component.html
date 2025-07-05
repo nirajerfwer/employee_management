@@ -1,0 +1,65 @@
+<div class="employee-form">
+  <h1>{{ isUpdate ? 'Update Product' : 'Add Product' }}</h1>
+
+  <form [formGroup]="eform" (ngSubmit)="formsubmit()">
+
+    <div class="formcontrollers">
+      <label>Employee Name</label>
+      <input type="text" formControlName="name" placeholder="Enter employee name" />
+      <label class="error" *ngIf="(employeeformcontrols['name'].touched || submited) && employeeformcontrols['name'].hasError('required')">
+        Name is Required
+      </label>
+    </div>
+
+    <div class="formcontrollers">
+      <label>Salary</label>
+      <input type="number" formControlName="salary" placeholder="Enter salary" />
+      <label class="error" *ngIf="(employeeformcontrols['salary'].touched || submited)">
+        <span *ngIf="employeeformcontrols['salary'].hasError('required')">Salary is Required</span>
+        <span *ngIf="employeeformcontrols['salary'].hasError('min')">Minimum salary is 1000</span>
+      </label>
+    </div>
+
+    <div class="formcontrollers">
+      <label>Email</label>
+      <input type="text" formControlName="email" placeholder="Enter email" />
+      <label class="error" *ngIf="(employeeformcontrols['email'].touched || submited)">
+        <span *ngIf="employeeformcontrols['email'].hasError('required')">Email is required</span>
+        <span *ngIf="employeeformcontrols['email'].hasError('email')">Use valid email</span>
+      </label>
+    </div>
+
+    <div class="formcontrollers">
+      <label>Date of Birth</label>
+      <input type="date" formControlName="dob" />
+      <label class="error" *ngIf="(employeeformcontrols['dob'].touched || submited)">
+        <span *ngIf="employeeformcontrols['dob'].hasError('required')">Date of birth is required</span>
+        <span *ngIf="employeeformcontrols['dob'].hasError('minage')">Age must be greater than 16 years</span>
+      </label>
+    </div>
+
+    <div class="formcontrollers">
+      <label>Upload Picture</label>
+      <input type="file" (change)="pictureuploaded($event)" />
+      <label class="error" *ngIf="pictureerror">{{ pictureerrormessage }}</label>
+    </div>
+
+    <div class="formcontrollers">
+      <label>Payroll Type</label>
+      <select formControlName="payroll">
+        <option value="">-- Select --</option>
+        <option value="adhoc">Adhoc</option>
+        <option value="permanent">Permanent</option>
+        <option value="temporary">Temporary</option>
+      </select>
+      <label class="error" *ngIf="(employeeformcontrols['payroll'].touched || submited) && employeeformcontrols['payroll'].hasError('required')">
+        Payroll is Required
+      </label>
+    </div>
+
+    <div class="formactions">
+      <button type="submit">{{ isUpdate ? 'Update Employee' : 'Create Employee' }}</button>
+    </div>
+
+  </form>
+</div>

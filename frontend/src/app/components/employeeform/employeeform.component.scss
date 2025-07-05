@@ -1,0 +1,50 @@
+.employee-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: black;
+  }
+
+  .formcontrollers {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    label {
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select {
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+
+  .formactions {
+    text-align: center;
+
+    button {
+      padding: 10px 20px;
+      background-color: black;
+      border: none;
+      color: white;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: black;
+    }
+  }
+}
