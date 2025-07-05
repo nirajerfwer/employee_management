@@ -7,7 +7,7 @@
       <label>Employee Name</label>
       <input type="text" formControlName="name" placeholder="Enter employee name" />
       <label class="error" *ngIf="(employeeformcontrols['name'].touched || submited) && employeeformcontrols['name'].hasError('required')">
-        Name is required.
+        name is required.
       </label>
     </div>
 
@@ -15,10 +15,10 @@
       <label>Salary</label>
       <input type="number" formControlName="salary" placeholder="Enter salary" />
       <label class="error" *ngIf="(employeeformcontrols['salary'].touched || submited) && employeeformcontrols['salary'].hasError('required')">
-        Salary is required.
+        salary is required.
       </label>
       <label class="error" *ngIf="(employeeformcontrols['salary'].touched || submited) && employeeformcontrols['salary'].hasError('min')">
-        Minimum salary must be ₹1000.
+        minimum salary must be ₹1000.
       </label>
     </div>
 
@@ -26,10 +26,10 @@
       <label>Email</label>
       <input type="email" formControlName="email" placeholder="Enter email" />
       <label class="error" *ngIf="employeeformcontrols['email'].touched && employeeformcontrols['email'].hasError('required') || submited && employeeformcontrols['email'].hasError('required')">
-        Email is required.
+        email is required.
       </label>
-      <label class="error" *ngIf="employeeformcontrols['email'].touched && employeeformcontrols['email'].hasError('email') || submited && employeeformcontrols['email'].hasError('pattern')">
-        Please enter a valid email address.
+      <label class="error" *ngIf="employeeformcontrols['email'].touched && employeeformcontrols['email'].hasError('pattern') || submited && employeeformcontrols['email'].hasError('pattern')">
+        please enter a valid email address.
       </label>
     </div>
 
@@ -37,10 +37,10 @@
       <label>Date of Birth</label>
       <input type="date" formControlName="dob" />
       <label class="error" *ngIf="(employeeformcontrols['dob'].touched || submited) && employeeformcontrols['dob'].hasError('required')">
-        Date of birth is required.
+        date of birth is required.
       </label>
       <label class="error" *ngIf="(employeeformcontrols['dob'].touched || submited) && employeeformcontrols['dob'].hasError('minage')">
-        Employee must be at least 16 years old.
+        dmployee must be at least 16 years old.
       </label>
     </div>
 
@@ -59,7 +59,7 @@
         <option value="temporary">Temporary</option>
       </select>
       <label class="error" *ngIf="(employeeformcontrols['payroll'].touched || submited) && employeeformcontrols['payroll'].hasError('required')">
-        Payroll type is required.
+        payroll type is required.
       </label>
     </div>
 

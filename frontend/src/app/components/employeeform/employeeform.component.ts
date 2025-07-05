@@ -21,7 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EmployeeformComponent implements OnInit {
   eform: FormGroup;
   submited = false;
-  uploadefile = File || null;
+  uploadefile = null;
   pictureerrormessage = '';
   pictureerror = false;
   isUpdate = false;
@@ -33,6 +33,7 @@ export class EmployeeformComponent implements OnInit {
     private router:Router,
     private route: ActivatedRoute
   ) {
+    this.uploadefile == null;
     this.eform = formbuild.group({
       name: ['', [Validators.required]],
       salary: ['', [Validators.required]],
@@ -72,9 +73,15 @@ export class EmployeeformComponent implements OnInit {
 
   formsubmit() {
     this.submited = true;
+    console.log("",this.uploadefile);
+    if(this.uploadefile == null && !this.isUpdate){
+           this.pictureerror = true;
+           this.pictureerrormessage = "image is required";
+        }
     if (this.eform.valid) {
       console.log('form is valid');
       if (!this.isUpdate) {
+        console.log("uploadefile",this.uploadefile);
         if(this.uploadefile == null){
            this.pictureerror = true;
            this.pictureerrormessage = "image is required";
@@ -83,20 +90,23 @@ export class EmployeeformComponent implements OnInit {
           .createemployee(this.eform.controls,this.uploadefile)
           .subscribe((data) => {
             console.log('employee created', data);
-            // alert('Employee Created');
+            alert('employee Created');
           });
       } else {
         this.employeeService
           .updateEmployee(this.currentid!, this.eform.controls,this.uploadefile)
           .subscribe((data) => {
             console.log('employee upload', data);
-            // alert('employees updated');
+            alert('employees updated');
           });
       }
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then(() => {
+       window.location.reload();
+      });
       console.log(this.eform);
     } else {
       console.log('form invalid');
+      alert("Form invalid");
     }
   }
 
@@ -107,18 +117,16 @@ export class EmployeeformComponent implements OnInit {
       let maxpicturesize = 150 * 1024;
       let filetypes = ['image/jpg', 'image/png', 'image/jpeg'];
       this.uploadefile = picture;
-      console.log(this.uploadefile);
-      console.log(filetypes.includes(picture.type));
-      console.log(picture.type);
       if (!filetypes.includes(picture.type)) {
         console.log('in picture type');
         this.pictureerrormessage = 'upload file type jpg or png or jpeg';
         this.pictureerror = true;
       }
-      if (picture.size > maxpicturesize) {
+      else if (picture.size > maxpicturesize) {
         this.pictureerrormessage = 'upload picture size smaller then 150 kb';
         this.pictureerror = true;
-      } else {
+      }
+      else {
         this.pictureerror = false;
         this.eform.patchValue({
           picture: picture,

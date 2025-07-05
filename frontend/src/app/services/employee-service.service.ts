@@ -40,6 +40,7 @@ export class EmployeeServiceService {
     myform.append("email",bodydata.email.value);
     myform.append("dob",bodydata.dob.value);
     myform.append("payroll",bodydata.payroll.value);
+
     if(picture){
       myform.append("picture",picture);
     }
