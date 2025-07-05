@@ -7,34 +7,40 @@
       <label>Employee Name</label>
       <input type="text" formControlName="name" placeholder="Enter employee name" />
       <label class="error" *ngIf="(employeeformcontrols['name'].touched || submited) && employeeformcontrols['name'].hasError('required')">
-        Name is Required
+        Name is required.
       </label>
     </div>
 
     <div class="formcontrollers">
       <label>Salary</label>
       <input type="number" formControlName="salary" placeholder="Enter salary" />
-      <label class="error" *ngIf="(employeeformcontrols['salary'].touched || submited)">
-        <span *ngIf="employeeformcontrols['salary'].hasError('required')">Salary is Required</span>
-        <span *ngIf="employeeformcontrols['salary'].hasError('min')">Minimum salary is 1000</span>
+      <label class="error" *ngIf="(employeeformcontrols['salary'].touched || submited) && employeeformcontrols['salary'].hasError('required')">
+        Salary is required.
+      </label>
+      <label class="error" *ngIf="(employeeformcontrols['salary'].touched || submited) && employeeformcontrols['salary'].hasError('min')">
+        Minimum salary must be ₹1000.
       </label>
     </div>
 
     <div class="formcontrollers">
       <label>Email</label>
-      <input type="text" formControlName="email" placeholder="Enter email" />
-      <label class="error" *ngIf="(employeeformcontrols['email'].touched || submited)">
-        <span *ngIf="employeeformcontrols['email'].hasError('required')">Email is required</span>
-        <span *ngIf="employeeformcontrols['email'].hasError('email')">Use valid email</span>
+      <input type="email" formControlName="email" placeholder="Enter email" />
+      <label class="error" *ngIf="employeeformcontrols['email'].touched && employeeformcontrols['email'].hasError('required') || submited && employeeformcontrols['email'].hasError('required')">
+        Email is required.
+      </label>
+      <label class="error" *ngIf="employeeformcontrols['email'].touched && employeeformcontrols['email'].hasError('email') || submited && employeeformcontrols['email'].hasError('pattern')">
+        Please enter a valid email address.
       </label>
     </div>
 
     <div class="formcontrollers">
       <label>Date of Birth</label>
       <input type="date" formControlName="dob" />
-      <label class="error" *ngIf="(employeeformcontrols['dob'].touched || submited)">
-        <span *ngIf="employeeformcontrols['dob'].hasError('required')">Date of birth is required</span>
-        <span *ngIf="employeeformcontrols['dob'].hasError('minage')">Age must be greater than 16 years</span>
+      <label class="error" *ngIf="(employeeformcontrols['dob'].touched || submited) && employeeformcontrols['dob'].hasError('required')">
+        Date of birth is required.
+      </label>
+      <label class="error" *ngIf="(employeeformcontrols['dob'].touched || submited) && employeeformcontrols['dob'].hasError('minage')">
+        Employee must be at least 16 years old.
       </label>
     </div>
 
@@ -53,7 +59,7 @@
         <option value="temporary">Temporary</option>
       </select>
       <label class="error" *ngIf="(employeeformcontrols['payroll'].touched || submited) && employeeformcontrols['payroll'].hasError('required')">
-        Payroll is Required
+        Payroll type is required.
       </label>
     </div>
 
