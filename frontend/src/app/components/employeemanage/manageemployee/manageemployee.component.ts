@@ -66,7 +66,7 @@ export class ManageemployeeComponent implements OnInit{
     console.log("delete id",id);
     this.employeeService.deleteEmployee(id).subscribe(()=>{
       console.log("employee deleted");
-      alert("employee delted");
+      alert("employee deleted");
       this.initialload();
     });
   }
